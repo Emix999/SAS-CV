@@ -1,0 +1,385 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #eef1f5;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111827;
+}
+
+button,
+select,
+input,
+textarea {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+}
+
+.toolbar {
+  width: 290px;
+  min-height: 100vh;
+  padding: 24px;
+  background: #172033;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
+.toolbar h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.toolbar p {
+  margin: 0 0 22px;
+  color: #d1d5db;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.toolbar-label {
+  display: block;
+  margin: 14px 0 7px;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.toolbar select,
+.toolbar button,
+.file-button {
+  width: 100%;
+  min-height: 42px;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #334155;
+  color: white;
+  cursor: pointer;
+}
+
+.toolbar select {
+  background: white;
+  color: #111827;
+  cursor: default;
+}
+
+.toolbar button:hover,
+.file-button:hover {
+  background: #475569;
+}
+
+.toolbar .primary-button {
+  margin-top: 12px;
+  background: #2563eb;
+  font-weight: 700;
+}
+
+.toolbar .primary-button:hover {
+  background: #1d4ed8;
+}
+
+.file-button {
+  display: block;
+  text-align: center;
+}
+
+.file-button input {
+  display: none;
+}
+
+.preview {
+  flex: 1;
+  padding: 32px;
+  overflow: auto;
+}
+
+.cv-page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.18);
+}
+
+.cv-template {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  color: #111827;
+}
+
+/* Pola edytowalne wyglądają jak zwykły tekst, ale po kliknięciu można je zmienić. */
+.editable-field {
+  width: 100%;
+  border: 1px dashed transparent;
+  outline: none;
+  background: transparent;
+  color: inherit;
+}
+
+.editable-field:hover,
+.editable-field:focus {
+  border-color: #93c5fd;
+  background: rgba(147, 197, 253, 0.1);
+}
+
+.editable-input {
+  display: block;
+}
+
+.editable-textarea {
+  display: block;
+  min-height: 58px;
+  resize: vertical;
+  overflow: hidden;
+  line-height: 1.45;
+}
+
+.pdf-mode .editable-field {
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.pdf-mode .no-pdf {
+  display: none !important;
+}
+
+/* Wspólne sekcje CV */
+.cv-section {
+  margin-bottom: 22px;
+}
+
+.cv-section h2 {
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #d1d5db;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cv-item {
+  position: relative;
+  margin-bottom: 16px;
+  padding-right: 42px;
+}
+
+.item-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.item-subtitle {
+  margin-top: 3px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 7px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.date-input {
+  width: 80px;
+  color: #6b7280;
+}
+
+.remove-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.remove-button:hover {
+  color: #ef4444;
+}
+
+/* Szablon klasyczny */
+.classic-template {
+  padding: 20mm;
+}
+
+.classic-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 26px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+  border-bottom: 3px solid #111827;
+}
+
+.first-name,
+.last-name {
+  font-size: 34px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.first-name {
+  font-weight: 300;
+}
+
+.last-name {
+  font-weight: 800;
+}
+
+.job-title {
+  margin-top: 8px;
+  color: #4b5563;
+  font-size: 16px;
+}
+
+.classic-contact {
+  width: 235px;
+  text-align: right;
+}
+
+.classic-contact .editable-field {
+  text-align: right;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: #374151;
+}
+
+/* Szablon nowoczesny */
+.modern-template {
+  display: grid;
+  grid-template-columns: 72mm 1fr;
+}
+
+.modern-sidebar {
+  min-height: 297mm;
+  padding: 18mm 10mm;
+  background: #111827;
+  color: white;
+}
+
+.modern-content {
+  padding: 18mm 15mm;
+}
+
+.modern-name {
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.modern-position {
+  margin-top: 8px;
+  margin-bottom: 28px;
+  color: #d1d5db;
+  font-size: 14px;
+}
+
+.modern-sidebar h2 {
+  margin: 24px 0 10px;
+  color: #93c5fd;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.modern-sidebar .editable-field {
+  color: white;
+  margin-bottom: 7px;
+}
+
+.modern-sidebar .editable-textarea {
+  min-height: 95px;
+}
+
+/* Szablon kreatywny */
+.creative-template {
+  padding: 18mm;
+}
+
+.creative-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  margin-bottom: 18px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #dbeafe, #fef3c7);
+}
+
+.creative-initials {
+  width: 90px;
+  height: 90px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: white;
+  color: #1e3a8a;
+  font-size: 32px;
+  font-weight: 800;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+}
+
+.creative-name-box {
+  flex: 1;
+}
+
+.creative-name {
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.creative-position {
+  margin-top: 8px;
+  color: #374151;
+  font-size: 16px;
+}
+
+.creative-contact {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.creative-contact .editable-field {
+  padding: 10px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  text-align: center;
+  font-size: 13px;
+}
+
+.pdf-mode .creative-contact .editable-field {
+  background: #f3f4f6 !important;
+}
+
+@media (max-width: 1000px) {
+  .app {
+    display: block;
+  }
+
+  .toolbar {
+    width: 100%;
+    min-height: auto;
+    position: static;
+  }
+
+  .preview {
+    padding: 18px;
+  }
+}
