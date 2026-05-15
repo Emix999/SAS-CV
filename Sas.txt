@@ -1,72 +1,13 @@
-/* Zdjęcie do CV */
+<aside className="modern-sidebar">
+  <PhotoBox
+    photo={cvData.photo}
+    initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+    onPhotoChange={(value) => onUpdateField("photo", value)}
+    className="modern-photo"
+  />
 
-.classic-person {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.photo-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.photo-box {
-  width: 92px;
-  height: 112px;
-  display: grid;
-  place-items: center;
-  border: 2px dashed #9ca3af;
-  border-radius: 12px;
-  background: #f9fafb;
-  color: #6b7280;
-  font-size: 26px;
-  font-weight: 800;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.photo-box input {
-  display: none;
-}
-
-.photo-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.photo-remove {
-  border: 0;
-  background: transparent;
-  color: #9ca3af;
-  font-size: 11px;
-  cursor: pointer;
-}
-
-.photo-remove:hover {
-  color: #ef4444;
-}
-
-.modern-photo {
-  margin-bottom: 22px;
-}
-
-.modern-sidebar .photo-box {
-  width: 110px;
-  height: 130px;
-  margin: 0 auto;
-  border-color: #93c5fd;
-  background: #1f2937;
-  color: white;
-}
-
-.pdf-mode .photo-box {
-  cursor: default;
-}
-
-.pdf-mode .photo-remove {
-  display: none !important;
-}
+  <EditableInput
+    className="modern-name"
+    value={cvData.firstName}
+    onChange={(value) => onUpdateField("firstName", value)}
+  />
