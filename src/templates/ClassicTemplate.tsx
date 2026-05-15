@@ -36,23 +36,31 @@ export function ClassicTemplate({
   return (
     <div className="cv-template classic-template">
       <header className="classic-header">
-        <div>
-          <EditableInput
-            className="first-name"
-            value={cvData.firstName}
-            onChange={(value) => onUpdateField("firstName", value)}
-          />
-          <EditableInput
-            className="last-name"
-            value={cvData.lastName}
-            onChange={(value) => onUpdateField("lastName", value)}
-          />
-          <EditableInput
-            className="job-title"
-            value={cvData.jobTitle}
-            onChange={(value) => onUpdateField("jobTitle", value)}
-          />
-        </div>
+  <div className="classic-person">
+    <PhotoBox
+      photo={cvData.photo}
+      initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+      onPhotoChange={(value) => onUpdateField("photo", value)}
+    />
+
+    <div>
+      <EditableInput
+        className="first-name"
+        value={cvData.firstName}
+        onChange={(value) => onUpdateField("firstName", value)}
+      />
+      <EditableInput
+        className="last-name"
+        value={cvData.lastName}
+        onChange={(value) => onUpdateField("lastName", value)}
+      />
+      <EditableInput
+        className="job-title"
+        value={cvData.jobTitle}
+        onChange={(value) => onUpdateField("jobTitle", value)}
+      />
+    </div>
+  </div>
 
         <div className="classic-contact">
           <EditableInput
