@@ -1,48 +1,67 @@
-import { CSSProperties, useEffect, useRef } from "react";
+import { ChangeEvent } from "react";
 
-type EditableTextareaProps = {
-  value: string;
-  onChange: (value: string) => void;
+type PhotoBoxProps = {
+  photo: string;
+  initials: string;
+  onPhotoChange: (photo: string) => void;
   className?: string;
-  style?: CSSProperties;
 };
 
-export function EditableTextarea({
-  value,
-  onChange,
-  className = "",
-  style
-}: EditableTextareaProps) {
-  const divRef = useRef<HTMLDivElement | null>(null);
+export function PhotoBox({
+  photo,
+  initials,
+  onPhotoChange,
+  className = ""
+}: PhotoBoxProps) {
+  const handlePhotoChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
 
-  useEffect(() => {
-    if (!divRef.current) {
+    if (!file) {
       return;
     }
 
-    if (document.activeElement !== divRef.current) {
-      divRef.current.innerText = value;
+    if (!file.type.startsWith("image/")) {
+      alert("Wybierz plik graficzny.");
+      return;
     }
-  }, [value]);
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        onPhotoChange(reader.result);
+      }
+    };
+
+    reader.readAsDataURL(file);
+  };
 
   return (
-    <div
-      ref={divRef}
-      className={`editable-field editable-textarea ${className}`}
-      contentEditable
-      suppressContentEditableWarning
-      onInput={(event) => {
-        const text = event.currentTarget.innerText;
-        onChange(text);
-      }}
-      onPaste={(event) => {
-        event.preventDefault();
-        const text = event.clipboardData.getData("text/plain");
-        document.execCommand("insertText", false, text);
-      }}
-      style={style}
-    >
-      {value}
+    <div className={`photo-wrapper ${className}`}>
+      <label className="photo-box">
+        {photo ? (
+          <img src={photo} alt="Zdjęcie do CV" />
+        ) : (
+          <span>{initials}</span>
+        )}
+
+        <input
+          className="no-pdf"
+          type="file"
+          accept="image/*"
+          onChange={handlePhotoChange}
+        />
+      </label>
+
+      {photo && (
+        <button
+          type="button"
+          className="photo-remove no-pdf"
+          onClick={() => onPhotoChange("")}
+        >
+          usuń zdjęcie
+        </button>
+      )}
     </div>
   );
 }
