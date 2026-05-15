@@ -383,3 +383,40 @@ textarea {
     padding: 18px;
   }
 }
+
+.editable-input {
+  display: block;
+  min-height: 1.4em;
+  line-height: 1.25;
+  padding: 2px 0;
+  white-space: pre-wrap;
+  overflow: visible;
+}
+
+.first-name,
+.last-name {
+  min-height: 48px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.modern-name {
+  min-height: 42px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.creative-name {
+  min-height: 46px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.pdf-mode .editable-input {
+  border-color: transparent !important;
+  background: transparent !important;
+  overflow: visible !important;
+}

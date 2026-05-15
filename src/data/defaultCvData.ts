@@ -7,6 +7,7 @@ export const defaultCvData: CvData = {
   email: "jan.kowalski@email.com",
   phone: "123 456 789",
   city: "Poznań",
+  photo: "",
   summary:
     "Jestem początkującym programistą frontend. Interesuję się Reactem, TypeScriptem oraz tworzeniem przejrzystych aplikacji internetowych.",
   skills: "React, TypeScript, HTML, CSS, Git, praca zespołowa",

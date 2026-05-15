@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
 type EditableInputProps = {
   value: string;
@@ -13,12 +13,31 @@ export function EditableInput({
   className = "",
   style
 }: EditableInputProps) {
+  const divRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!divRef.current) {
+      return;
+    }
+
+    if (document.activeElement !== divRef.current) {
+      divRef.current.textContent = value;
+    }
+  }, [value]);
+
   return (
-    <input
+    <div
+      ref={divRef}
       className={`editable-field editable-input ${className}`}
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
+      contentEditable
+      suppressContentEditableWarning
+      onInput={(event) => {
+        const text = event.currentTarget.textContent ?? "";
+        onChange(text.replace(/\n/g, " "));
+      }}
       style={style}
-    />
+    >
+      {value}
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
 type EditableTextareaProps = {
   value: string;
@@ -13,12 +13,36 @@ export function EditableTextarea({
   className = "",
   style
 }: EditableTextareaProps) {
+  const divRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!divRef.current) {
+      return;
+    }
+
+    if (document.activeElement !== divRef.current) {
+      divRef.current.innerText = value;
+    }
+  }, [value]);
+
   return (
-    <textarea
+    <div
+      ref={divRef}
       className={`editable-field editable-textarea ${className}`}
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
+      contentEditable
+      suppressContentEditableWarning
+      onInput={(event) => {
+        const text = event.currentTarget.innerText;
+        onChange(text);
+      }}
+      onPaste={(event) => {
+        event.preventDefault();
+        const text = event.clipboardData.getData("text/plain");
+        document.execCommand("insertText", false, text);
+      }}
       style={style}
-    />
+    >
+      {value}
+    </div>
   );
 }

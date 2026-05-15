@@ -4,6 +4,7 @@ import { EducationSection } from "../components/sections/EducationSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { CvData, EducationItem, ExperienceItem, Language } from "../types/cv";
 import { t } from "../utils/translations";
+import { PhotoBox } from "../components/PhotoBox";
 
 type ClassicTemplateProps = {
   cvData: CvData;
