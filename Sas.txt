@@ -1,43 +1,37 @@
-import { CSSProperties, useEffect, useRef } from "react";
+/* Lepsze renderowanie pól tekstowych w PDF */
+.editable-input {
+  display: block;
+  min-height: 1.4em;
+  line-height: 1.25;
+  padding: 2px 0;
+  white-space: pre-wrap;
+  overflow: visible;
+}
 
-type EditableInputProps = {
-  value: string;
-  onChange: (value: string) => void;
-  className?: string;
-  style?: CSSProperties;
-};
+.first-name,
+.last-name {
+  min-height: 48px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 
-export function EditableInput({
-  value,
-  onChange,
-  className = "",
-  style
-}: EditableInputProps) {
-  const divRef = useRef<HTMLDivElement | null>(null);
+.modern-name {
+  min-height: 42px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 
-  useEffect(() => {
-    if (!divRef.current) {
-      return;
-    }
+.creative-name {
+  min-height: 46px;
+  line-height: 1.15;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
 
-    if (document.activeElement !== divRef.current) {
-      divRef.current.textContent = value;
-    }
-  }, [value]);
-
-  return (
-    <div
-      ref={divRef}
-      className={`editable-field editable-input ${className}`}
-      contentEditable
-      suppressContentEditableWarning
-      onInput={(event) => {
-        const text = event.currentTarget.textContent ?? "";
-        onChange(text.replace(/\n/g, " "));
-      }}
-      style={style}
-    >
-      {value}
-    </div>
-  );
+.pdf-mode .editable-input {
+  border-color: transparent !important;
+  background: transparent !important;
+  overflow: visible !important;
 }
