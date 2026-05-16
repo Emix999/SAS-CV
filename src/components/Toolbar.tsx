@@ -13,6 +13,7 @@ type ToolbarProps = {
   onExportJson: () => void;
   onImportJson: (file: File) => void;
   onReset: () => void;
+  onClearData: () => void;
 };
 
 export function Toolbar({
@@ -25,7 +26,8 @@ export function Toolbar({
   onExportPdf,
   onExportJson,
   onImportJson,
-  onReset
+  onReset,
+  onClearData
 }: ToolbarProps) {
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -87,6 +89,10 @@ export function Toolbar({
         {t(language, "importJson")}
         <input type="file" accept="application/json" onChange={handleFileChange} />
       </label>
+
+      <button type="button" onClick={onClearData}>
+      {t(language, "clearData")}
+      </button>
 
       <button type="button" onClick={onReset}>
         {t(language, "reset")}

@@ -19,7 +19,8 @@ type TranslationKey =
   | "experience"
   | "education"
   | "contact"
-  | "remove";
+  | "remove"
+  | "clearData";
 
 const translations: Record<Language, Record<TranslationKey, string>> = {
   pl: {
@@ -41,7 +42,8 @@ const translations: Record<Language, Record<TranslationKey, string>> = {
     experience: "Doświadczenie",
     education: "Edukacja",
     contact: "Kontakt",
-    remove: "usuń"
+    remove: "usuń",
+    clearData: "Wyczyść dane"
   },
   en: {
     appTitle: "CV Creator",
@@ -62,7 +64,8 @@ const translations: Record<Language, Record<TranslationKey, string>> = {
     experience: "Experience",
     education: "Education",
     contact: "Contact",
-    remove: "remove"
+    remove: "remove",
+    clearData: "Clear data"
   }
 };
 

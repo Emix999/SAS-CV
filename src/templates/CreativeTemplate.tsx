@@ -4,6 +4,7 @@ import { EducationSection } from "../components/sections/EducationSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { CvData, EducationItem, ExperienceItem, Language } from "../types/cv";
 import { t } from "../utils/translations";
+import { PhotoBox } from "../components/PhotoBox";
 
 type CreativeTemplateProps = {
   cvData: CvData;
@@ -35,10 +36,12 @@ export function CreativeTemplate({
   return (
     <div className="cv-template creative-template">
       <header className="creative-header">
-        <div className="creative-initials">
-          {cvData.firstName.charAt(0)}
-          {cvData.lastName.charAt(0)}
-        </div>
+        <PhotoBox
+  photo={cvData.photo}
+  initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+  onPhotoChange={(value) => onUpdateField("photo", value)}
+  className="creative-photo"
+/>
 
         <div className="creative-name-box">
           <EditableInput

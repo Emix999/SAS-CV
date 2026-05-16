@@ -320,18 +320,7 @@ textarea {
   background: linear-gradient(135deg, #dbeafe, #fef3c7);
 }
 
-.creative-initials {
-  width: 90px;
-  height: 90px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: white;
-  color: #1e3a8a;
-  font-size: 32px;
-  font-weight: 800;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
-}
+
 
 .creative-name-box {
   flex: 1;
@@ -490,4 +479,40 @@ textarea {
 
 .pdf-mode .photo-remove {
   display: none !important;
+}
+
+.creative-photo .photo-box {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background: white;
+  color: #1e3a8a;
+  font-size: 30px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+}
+
+.creative-photo .photo-box img {
+  border-radius: 50%;
+}
+.cv-page.pdf-mode {
+  width: 210mm !important;
+  height: 296.7mm !important;
+  min-height: 296.7mm !important;
+  max-height: 296.7mm !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+.cv-page.pdf-mode .cv-template {
+  width: 210mm !important;
+  height: 296.7mm !important;
+  min-height: 296.7mm !important;
+  max-height: 296.7mm !important;
+  overflow: hidden !important;
+}
+
+.cv-page.pdf-mode .modern-sidebar {
+  min-height: 296.7mm !important;
+  height: 296.7mm !important;
 }
