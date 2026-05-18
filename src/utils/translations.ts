@@ -16,11 +16,11 @@ type TranslationKey =
   | "reset"
   | "profile"
   | "skills"
+  | "interests"
   | "experience"
   | "education"
   | "contact"
-  | "remove"
-  | "clearData";
+  | "remove";
 
 const translations: Record<Language, Record<TranslationKey, string>> = {
   pl: {
@@ -39,11 +39,11 @@ const translations: Record<Language, Record<TranslationKey, string>> = {
     reset: "Przywróć przykład",
     profile: "Profil zawodowy",
     skills: "Umiejętności",
+    interests: "Zainteresowania",
     experience: "Doświadczenie",
     education: "Edukacja",
     contact: "Kontakt",
-    remove: "usuń",
-    clearData: "Wyczyść dane"
+    remove: "usuń"
   },
   en: {
     appTitle: "CV Creator",
@@ -61,11 +61,11 @@ const translations: Record<Language, Record<TranslationKey, string>> = {
     reset: "Restore example",
     profile: "Professional profile",
     skills: "Skills",
+    interests: "Interests",
     experience: "Experience",
     education: "Education",
     contact: "Contact",
-    remove: "remove",
-    clearData: "Clear data"
+    remove: "remove"
   }
 };
 

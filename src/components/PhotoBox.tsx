@@ -36,13 +36,15 @@ export function PhotoBox({
     reader.readAsDataURL(file);
   };
 
+  const visibleInitials = initials.trim() || "CV";
+
   return (
     <div className={`photo-wrapper ${className}`}>
       <label className="photo-box">
         {photo ? (
           <img src={photo} alt="Zdjęcie do CV" />
         ) : (
-          <span>{initials}</span>
+          <span>{visibleInitials}</span>
         )}
 
         <input

@@ -1,10 +1,10 @@
 import { EditableInput } from "../components/EditableInput";
 import { EditableTextarea } from "../components/EditableTextarea";
+import { PhotoBox } from "../components/PhotoBox";
 import { EducationSection } from "../components/sections/EducationSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { CvData, EducationItem, ExperienceItem, Language } from "../types/cv";
 import { t } from "../utils/translations";
-import { PhotoBox } from "../components/PhotoBox";
 
 type ModernTemplateProps = {
   cvData: CvData;
@@ -36,18 +36,18 @@ export function ModernTemplate({
   return (
     <div className="cv-template modern-template">
       <aside className="modern-sidebar">
-  <PhotoBox
-    photo={cvData.photo}
-    initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
-    onPhotoChange={(value) => onUpdateField("photo", value)}
-    className="modern-photo"
-  />
+        <PhotoBox
+          photo={cvData.photo}
+          initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+          onPhotoChange={(value) => onUpdateField("photo", value)}
+          className="modern-photo"
+        />
 
-  <EditableInput
-    className="modern-name"
-    value={cvData.firstName}
-    onChange={(value) => onUpdateField("firstName", value)}
-  />
+        <EditableInput
+          className="modern-name"
+          value={cvData.firstName}
+          onChange={(value) => onUpdateField("firstName", value)}
+        />
         <EditableInput
           className="modern-name"
           value={cvData.lastName}
@@ -77,6 +77,12 @@ export function ModernTemplate({
         <EditableTextarea
           value={cvData.skills}
           onChange={(value) => onUpdateField("skills", value)}
+        />
+
+        <h2>{t(language, "interests")}</h2>
+        <EditableTextarea
+          value={cvData.interests}
+          onChange={(value) => onUpdateField("interests", value)}
         />
       </aside>
 

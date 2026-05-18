@@ -10,20 +10,6 @@ import { createId } from "./utils/id";
 import { exportCvDataToJson, readCvDataFromJson } from "./utils/jsonFile";
 import { exportCvToPdf } from "./utils/pdf";
 
-const emptyCvData: CvData = {
-  firstName: "",
-  lastName: "",
-  jobTitle: "",
-  email: "",
-  phone: "",
-  city: "",
-  photo: "",
-  summary: "",
-  skills: "",
-  experience: [],
-  education: []
-};
-
 function App() {
   const [cvData, setCvData] = useState<CvData>(defaultCvData);
   const [template, setTemplate] = useState<TemplateName>("classic");
@@ -159,7 +145,6 @@ function App() {
         onExportJson={() => exportCvDataToJson(cvData)}
         onImportJson={handleImportJson}
         onReset={() => setCvData(defaultCvData)}
-        onClearData={() => setCvData(emptyCvData)}
       />
 
       <main className="preview">

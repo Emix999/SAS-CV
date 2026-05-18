@@ -11,6 +11,7 @@ export const defaultCvData: CvData = {
   summary:
     "Jestem początkującym programistą frontend. Interesuję się Reactem, TypeScriptem oraz tworzeniem przejrzystych aplikacji internetowych.",
   skills: "React, TypeScript, HTML, CSS, Git, praca zespołowa",
+  interests: "Programowanie, nowe technologie, grafika komputerowa, gry logiczne",
   experience: [
     {
       id: "exp-1",

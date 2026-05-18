@@ -28,6 +28,7 @@ export type CvData = {
   photo: string;
   summary: string;
   skills: string;
+  interests: string;
   experience: ExperienceItem[];
   education: EducationItem[];
 };

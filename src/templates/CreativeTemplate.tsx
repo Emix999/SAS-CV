@@ -1,10 +1,10 @@
 import { EditableInput } from "../components/EditableInput";
 import { EditableTextarea } from "../components/EditableTextarea";
+import { PhotoBox } from "../components/PhotoBox";
 import { EducationSection } from "../components/sections/EducationSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { CvData, EducationItem, ExperienceItem, Language } from "../types/cv";
 import { t } from "../utils/translations";
-import { PhotoBox } from "../components/PhotoBox";
 
 type CreativeTemplateProps = {
   cvData: CvData;
@@ -37,11 +37,11 @@ export function CreativeTemplate({
     <div className="cv-template creative-template">
       <header className="creative-header">
         <PhotoBox
-  photo={cvData.photo}
-  initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
-  onPhotoChange={(value) => onUpdateField("photo", value)}
-  className="creative-photo"
-/>
+          photo={cvData.photo}
+          initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+          onPhotoChange={(value) => onUpdateField("photo", value)}
+          className="creative-photo"
+        />
 
         <div className="creative-name-box">
           <EditableInput
@@ -90,6 +90,14 @@ export function CreativeTemplate({
         <EditableTextarea
           value={cvData.skills}
           onChange={(value) => onUpdateField("skills", value)}
+        />
+      </section>
+
+      <section className="cv-section">
+        <h2>{t(language, "interests")}</h2>
+        <EditableTextarea
+          value={cvData.interests}
+          onChange={(value) => onUpdateField("interests", value)}
         />
       </section>
 

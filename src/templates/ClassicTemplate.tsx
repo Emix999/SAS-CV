@@ -1,10 +1,10 @@
 import { EditableInput } from "../components/EditableInput";
 import { EditableTextarea } from "../components/EditableTextarea";
+import { PhotoBox } from "../components/PhotoBox";
 import { EducationSection } from "../components/sections/EducationSection";
 import { ExperienceSection } from "../components/sections/ExperienceSection";
 import { CvData, EducationItem, ExperienceItem, Language } from "../types/cv";
 import { t } from "../utils/translations";
-import { PhotoBox } from "../components/PhotoBox";
 
 type ClassicTemplateProps = {
   cvData: CvData;
@@ -36,31 +36,31 @@ export function ClassicTemplate({
   return (
     <div className="cv-template classic-template">
       <header className="classic-header">
-  <div className="classic-person">
-    <PhotoBox
-      photo={cvData.photo}
-      initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
-      onPhotoChange={(value) => onUpdateField("photo", value)}
-    />
+        <div className="classic-person">
+          <PhotoBox
+            photo={cvData.photo}
+            initials={`${cvData.firstName.charAt(0)}${cvData.lastName.charAt(0)}`}
+            onPhotoChange={(value) => onUpdateField("photo", value)}
+          />
 
-    <div>
-      <EditableInput
-        className="first-name"
-        value={cvData.firstName}
-        onChange={(value) => onUpdateField("firstName", value)}
-      />
-      <EditableInput
-        className="last-name"
-        value={cvData.lastName}
-        onChange={(value) => onUpdateField("lastName", value)}
-      />
-      <EditableInput
-        className="job-title"
-        value={cvData.jobTitle}
-        onChange={(value) => onUpdateField("jobTitle", value)}
-      />
-    </div>
-  </div>
+          <div>
+            <EditableInput
+              className="first-name"
+            value={cvData.firstName}
+            onChange={(value) => onUpdateField("firstName", value)}
+          />
+          <EditableInput
+            className="last-name"
+            value={cvData.lastName}
+            onChange={(value) => onUpdateField("lastName", value)}
+          />
+            <EditableInput
+              className="job-title"
+              value={cvData.jobTitle}
+              onChange={(value) => onUpdateField("jobTitle", value)}
+            />
+          </div>
+        </div>
 
         <div className="classic-contact">
           <EditableInput
@@ -91,6 +91,14 @@ export function ClassicTemplate({
         <EditableTextarea
           value={cvData.skills}
           onChange={(value) => onUpdateField("skills", value)}
+        />
+      </section>
+
+      <section className="cv-section">
+        <h2>{t(language, "interests")}</h2>
+        <EditableTextarea
+          value={cvData.interests}
+          onChange={(value) => onUpdateField("interests", value)}
         />
       </section>
 
